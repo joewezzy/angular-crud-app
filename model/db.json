@@ -1,0 +1,28 @@
+{
+  "employee": [
+    {
+      "firstName": "joe",
+      "lastName": "mar",
+      "email": "email@mail.com",
+      "dob": "2023-02-09T00:00:00.000Z",
+      "gender": "others",
+      "education": "Intermediate",
+      "company": "Google",
+      "experience": 3,
+      "package": 5,
+      "id": 1
+    },
+    {
+      "firstName": "deGreat",
+      "lastName": "fred",
+      "email": "fred@gmail.com",
+      "dob": "2023-02-07T00:00:00.000Z",
+      "gender": "male",
+      "education": "Graduate",
+      "company": "Turntabl",
+      "experience": 2,
+      "package": 400,
+      "id": 2
+    }
+  ]
+}

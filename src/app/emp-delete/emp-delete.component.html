@@ -1,0 +1,14 @@
+<div mat-dialog-title>
+  <h2>Delete Employee</h2>
+</div>
+<div mat-dialog-content>
+  <p>Are you sure you'd want to delete the Employee Profile.<br/>This operation is irreversible.</p>
+</div>
+<div mat-dialog-action class="action">
+  <button mat-icon-button color="primary" [mat-dialog-close]="false">
+    <mat-icon>thumb_down</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="deleteEmpProfile()">
+    <mat-icon>thumb_up</mat-icon>
+  </button>
+</div>
