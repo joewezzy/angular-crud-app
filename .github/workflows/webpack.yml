@@ -21,6 +21,6 @@ jobs:
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: build
+        folder: dist/crud-app/index.html
         branch: gh-pages
         token: ${{ secrets.GITHUB_TOKEN }}
