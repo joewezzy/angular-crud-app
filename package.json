@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "deploy": "gh-pages -d build && npm run server",
+    "deploy": "gh-pages -d dist && npm run server",
     "server": "json-server --watch model/db.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
