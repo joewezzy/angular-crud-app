@@ -1,9 +1,11 @@
 {
   "name": "crud-app",
   "version": "0.0.0",
+  "homepage": "https://joewezzy.github.io/angular-crud-app",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "deploy": "gh-pages -d build && npm run server",
     "server": "json-server --watch model/db.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -31,6 +33,7 @@
     "@angular/cli": "~15.1.4",
     "@angular/compiler-cli": "^15.1.0",
     "@types/jasmine": "~4.3.0",
+    "gh-pages": "^6.1.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
