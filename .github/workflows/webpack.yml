@@ -21,6 +21,8 @@ jobs:
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
+      run:
+        npm run deploy
       with:
         folder: dist/crud-app/
         branch: gh-pages
