@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CoreService } from './core/core.service';
 import { EmpDeleteComponent } from './emp-delete/emp-delete.component';
+import { Employee } from './model/employee.model';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,20 @@ import { EmpDeleteComponent } from './emp-delete/emp-delete.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+
+  employees: Employee[] = [];
+
+
   displayedColumns: string[] = [
+    // 'id',
     'fullName',
     'email',
+    'dob',
     'gender',
+    'education',
     'company',
     'experience',
     'package',
-    'action',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -33,7 +40,7 @@ export class AppComponent implements OnInit {
     private _dialog: MatDialog,
     private _empService: EmployeeService,
     private _coreService: CoreService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getEmployees();
@@ -48,16 +55,22 @@ export class AppComponent implements OnInit {
     })
   }
 
-  getEmployees() {
-    this._empService.getEmployee().subscribe({
-      next: (res) => {
-        const dataArray = Object.values(res);
-        this.dataSource = new MatTableDataSource(dataArray);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      },
-      error: console.error,
-    });
+  getEmployees(): MatTableDataSource<any> {    
+    this.dataSource = new MatTableDataSource(JSON.parse(localStorage.getItem('employees')));
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
+    return this.dataSource;
+
+    // this._empService.getEmployee().subscribe({
+    //   next: (res) => {
+    //     const dataArray = Object.values(res);
+    //     this.dataSource = new MatTableDataSource(dataArray);
+    //     this.dataSource.sort = this.sort;
+    //     this.dataSource.paginator = this.paginator;
+    //   },
+    //   error: console.error,
+    // });
   }
 
   applyFilter(event: Event) {

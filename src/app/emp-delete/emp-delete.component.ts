@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
 import { EmployeeService } from '../service/employee.service';
+import { Employee } from '../model/employee.model';
 
 @Component({
   selector: 'app-emp-delete',
@@ -17,12 +18,18 @@ export class EmpDeleteComponent {
   ) {}
 
   deleteEmpProfile() {
-    this._empService.deleteEmployee(this._data).subscribe({
-      next: (res) => {
-        this._coreService.openSnackBar('Employee deleted!');
-        this._dialog.close(true);
-      },
-      error: console.error,
-    });
+    const empData = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : [];
+    const employees = empData.filter(emp => emp.id !== this._data);
+
+    localStorage.setItem('employees', JSON.stringify(employees))
+
+    this._coreService.openSnackBar('Employee deleted!');
+    this._dialog.close(true);
+
+    // this._empService.deleteEmployee(this._data).subscribe({
+    //   next: (res) => {
+    //   },
+    //   error: console.error,
+    // });
   }
 }

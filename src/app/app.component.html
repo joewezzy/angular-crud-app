@@ -28,7 +28,7 @@
       <!-- Progress Column -->
       <ng-container matColumnDef="fullName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-        <td mat-cell *matCellDef="let row">{{ row.firstName + row.lastName  | titlecase }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.firstName + ' ' + row.lastName  | titlecase }}</td>
       </ng-container>
       <!-- <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
@@ -38,18 +38,18 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
         <td mat-cell *matCellDef="let row">{{ row.email }}</td>
       </ng-container>
-      <!-- <ng-container matColumnDef="dob">
+      <ng-container matColumnDef="dob">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</th>
         <td mat-cell *matCellDef="let row">{{ row.dob | date }}</td>
-      </ng-container> -->
+      </ng-container>
       <ng-container matColumnDef="gender">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
         <td mat-cell *matCellDef="let row">{{ row.gender | titlecase }}</td>
       </ng-container>
-      <!-- <ng-container matColumnDef="education">
+      <ng-container matColumnDef="education">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Education</th>
         <td mat-cell *matCellDef="let row">{{ row.education }}</td>
-      </ng-container> -->
+      </ng-container>
       <ng-container matColumnDef="company">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
         <td mat-cell *matCellDef="let row">{{ row.company }}</td>
@@ -88,7 +88,7 @@
     </table>
 
     <mat-paginator
-      [pageSizeOptions]="[2, 5, 10, 25, 100]"
+      [pageSizeOptions]="[10, 25, 100]"
       aria-label="Select page of users"
     ></mat-paginator>
   </div>
