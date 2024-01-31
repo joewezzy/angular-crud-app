@@ -6,22 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeService {
+  api = "https://angular-crud-app-9c0c9-default-rtdb.firebaseio.com/employees.json"
 
   constructor(private _http: HttpClient) { }
   
   getEmployee(): Observable<any> {
-    return this._http.get('http://localhost:3000/employee');
+    return this._http.get(this.api);
   }
   
   addEmployee(data: any): Observable<any> {
-    return this._http.post('http://localhost:3000/employee', data);
+    return this._http.post(this.api, data);
   }
 
   updateEmployee(id: number, data: any): Observable<any> {
-    return this._http.patch(`http://localhost:3000/employee/${id}`, data);
+    return this._http.patch(`${this.api}/${id}`, data);
   }
 
   deleteEmployee(id: number): Observable<any> {
-    return this._http.delete(`http://localhost:3000/employee/${id}`);
+    return this._http.delete(`${this.api}/${id}`);
   }
 }
