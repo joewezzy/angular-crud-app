@@ -16,3 +16,8 @@ mat-toolBar {
   border-radius: 3px;
   padding: 0 5%;
 }
+
+.table-container {
+  /* max-height: 400px; Set your desired max height */
+  overflow-x: auto;
+}
