@@ -16,13 +16,9 @@ import { EmpDeleteComponent } from './emp-delete/emp-delete.component';
 })
 export class AppComponent implements OnInit {
   displayedColumns: string[] = [
-    'id',
-    'firstName',
-    'lastName',
+    'fullName',
     'email',
-    'dob',
     'gender',
-    'education',
     'company',
     'experience',
     'package',
