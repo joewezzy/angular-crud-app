@@ -55,7 +55,8 @@ export class AppComponent implements OnInit {
   getEmployees() {
     this._empService.getEmployee().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
+        const dataArray = Object.values(res);
+        this.dataSource = new MatTableDataSource(dataArray);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       },
@@ -64,7 +65,7 @@ export class AppComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+    const filterValue = (event?.target as HTMLInputElement)?.value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
