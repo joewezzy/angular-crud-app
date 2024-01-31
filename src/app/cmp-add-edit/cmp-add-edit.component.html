@@ -6,21 +6,21 @@
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
-        <input matInput  formControlName="firstName"/>
+        <input matInput  formControlName="firstName" required/>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Last Name</mat-label>
-        <input matInput  formControlName="lastName"/>
+        <input matInput  formControlName="lastName" required/>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email"/>
+        <input matInput type="email" formControlName="email" required/>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Date of Birth</mat-label> 
-        <input matInput [matDatepicker]="picker" formControlName="dob"/>
+        <input matInput [matDatepicker]="picker" formControlName="dob" required/>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconPrefix
@@ -30,7 +30,7 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <mat-radio-group arial-label="Select an option" formControlName="gender">
+      <mat-radio-group arial-label="Select an option" formControlName="gender" required>
         <mat-label><b>Gender</b></mat-label>
         <mat-radio-button value="male">Male</mat-radio-button>
         <mat-radio-button value="female">Female</mat-radio-button>
@@ -40,7 +40,7 @@
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Qualification</mat-label>
-        <mat-select formControlName="education">
+        <mat-select formControlName="education" required>
           <mat-option *ngFor="let level of education" [value]="level">
             {{ level }}
           </mat-option>
@@ -48,18 +48,18 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Company</mat-label>
-        <input matInput  formControlName="company"/>
+        <input matInput  formControlName="company" required/>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Experience</mat-label>
-        <input matInput type="number"  formControlName="experience" min="1" />
+        <input matInput type="number"  formControlName="experience" min="1" required/>
         <mat-hint>Years of Experience</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Package</mat-label>
-        <input matInput type="number"  formControlName="package"/>
+        <input matInput type="number"  formControlName="package" required/>
         <mat-hint>In cedis</mat-hint>
       </mat-form-field>
     </div>
