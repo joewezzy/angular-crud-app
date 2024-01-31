@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CoreService } from '../core/core.service';
 import { EmployeeService } from '../service/employee.service';
+import { Employee } from '../model/employee.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-cmp-add-edit',
@@ -47,14 +49,36 @@ export class CmpAddEditComponent implements OnInit {
 
   onSubmit() {
     if (this.empForm.valid) {
-      const serviceData = this.data ? this._empService.updateEmployee(this.data.id, this.empForm.value) : this._empService.addEmployee(this.empForm.value);
-      serviceData.subscribe({
-        next: (res) => {
-          this._coreService.openSnackBar(`Employee ${this.data ? 'data updated' : 'added'} successfully! `);
-          this._dialogRef.close(true);
-        },
-        error: console.error,
-      });
+      let employees: Employee[] = [];
+
+      const empData = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : [];
+      employees = empData;
+
+      if (this.data){
+        const listOfEmployees = employees.filter(emp => emp.id !== this.data.id);
+        let employee = employees.filter(emp => emp.id === this.data.id)[0];
+        const formObject = { ...this.empForm.value, id: employee.id}
+
+        listOfEmployees.push(formObject);
+        localStorage.setItem('employees', JSON.stringify(listOfEmployees));
+      } else {
+        const formObject = { ...this.empForm.value, id: uuidv4()}
+        console.log(formObject);
+        
+        employees.push(formObject)
+        
+        localStorage.setItem('employees', JSON.stringify(employees));
+      }
+
+      this._coreService.openSnackBar(`Employee ${this.data ? 'data updated' : 'added'} successfully! `);
+      this._dialogRef.close(true);
+
+      // const serviceData = this.data ? this._empService.updateEmployee(this.data.id, this.empForm.value) : this._empService.addEmployee(formObject);
+      // serviceData.subscribe({
+      //   next: (res) => {
+      //   },
+      //   error: console.error,
+      // });
     }
   }
 }
